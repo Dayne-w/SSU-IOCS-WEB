@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>예약 서비스</title>
+<style>
+  h1 {
+    text-align: center; /* 제목 중앙에 정렬 */
+    margin-top: 100px; /* 상단 여백 */
+    margin-bottom: 150px; /* 하단 여백 */
+  }
+
+  .container {
+    position: relative;
+    max-width: 600px; /* 컨테이너의 최대 너비 */
+    margin: auto;
+    border: 2px solid black; /* 검은색 실선 테두리 추가 */
+    padding: 120px; /* 내부 여백 추가 */
+  }
+
+  .container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    width: 40px; /* 컨테이너의 `::before`의 너비 */
+    height: 60px; /* 컨테이너의 `::before`의 높이 */
+    background-color: gray;
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%, 10% 50%);
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between; /* 좌석 사이에 균등한 간격 */
+    margin-bottom: 20px; /* 행과 행 사이의 간격 */
+  }
+
+  .seat {
+    width: 50px; /* 좌석의 너비 */
+    height: 50px; /* 좌석의 높이 */
+    background-color: #f79d16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #ccc; /* 좌석의 테두리 */
+    border-radius: 10px; /* 모서리 둥글게 */
+  }
+
+  .occupied {
+    background-color: #fbe3c5;
+  }
+
+  .selected {
+    background-color: #8fbc8f;
+  }
+
+  .seat:not(.occupied):hover {
+    background-color: #c29f6f;
+  }
+</style>
+</head>
+<body>
+
+<h1>좌석 배치도</h1>
+
+<div class="container">
+  <!-- 첫 번째 줄: 1번부터 10번 좌석 -->
+  <div class="row">
+    <div class="seat occupied" data-seat="1">1</div>
+    <div class="seat" data-seat="2">2</div>
+    <div class="seat" data-seat="3">3</div>
+    <div class="seat occupied" data-seat="4">4</div>
+    <div class="seat" data-seat="5">5</div>
+    <div class="seat occupied" data-seat="6">6</div>
+    <div class="seat occupied" data-seat="7">7</div>
+    <div class="seat" data-seat="8">8</div>
+    <div class="seat occupied" data-seat="9">9</div>
+    <div class="seat" data-seat="10">10</div>
+  </div>
+
+  <!-- 두 번째 줄: 11번부터 20번 좌석 -->
+  <div class="row">
+    <div class="seat" data-seat="11">11</div>
+    <div class="seat occupied" data-seat="12">12</div>
+    <div class="seat occupied" data-seat="13">13</div>
+    <div class="seat" data-seat="14">14</div>
+    <div class="seat occupied" data-seat="15">15</div>
+    <div class="seat" data-seat="16">16</div>
+    <div class="seat" data-seat="17">17</div>
+    <div class="seat occupied" data-seat="18">18</div>
+    <div class="seat" data-seat="19">19</div>
+    <div class="seat occupied" data-seat="20">20</div>
+  </div>
+</div>
+
+<script>
+</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2024년 4월 달력</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center; /* 제목을 중앙에 정렬 */
+    margin-top: 100px; /* 상단 여백을 줍니다. */
+    margin-bottom: 50px; /* 하단 여백을 수정 */
+  }
+
+  .calendar, .next-button-container {
+    max-width: 300px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  .calendar th, 
+  .calendar td {
+    border: 1px solid #999;
+    padding: 30px;
+    text-align: center;
+  }
+  .calendar th {
+    background-color: #fdd59a;
+  }
+  .calendar td:not(.empty) {
+    cursor: pointer;
+  }
+  .calendar td:hover:not(.empty) {
+    background-color: #f0f0f0;
+  }
+  .next-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<h1>2024년 4월 예약 페이지</h1>
+<table class="calendar">
+  <tr>
+    <th>일</th>
+    <th>월</th>
+    <th>화</th>
+    <th>수</th>
+    <th>목</th>
+    <th>금</th>
+    <th>토</th>
+  </tr>
+  <tr>
+    <td class="empty"></td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>10</td>
+    <td>11</td>
+    <td>12</td>
+    <td>13</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>15</td>
+    <td>16</td>
+    <td>17</td>
+    <td>18</td>
+    <td>19</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>22</td>
+    <td>23</td>
+    <td>24</td>
+    <td>25</td>
+    <td>26</td>
+    <td>27</td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>29</td>
+    <td>30</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+  </tr>
+</table>
+<div class="next-button-container">
+  <button class="next-button" id="nextButton">다음</button>
+</div>
+
+<script>
+  let selectedDate = null;
+
+  document.querySelectorAll('.calendar td:not(.empty)').forEach(td => {
+    td.addEventListener('click', function() {
+      if (selectedDate) {
+        selectedDate.classList.remove('selected');
+      }
+      this.classList.add('selected');
+      selectedDate = this;
+    });
+  });
+
+  document.getElementById('nextButton').addEventListener('click', function() {
+    if (selectedDate) {
+      // 예약 웹사이트 페이지로 이동. 실제 URL로 변경 필요.
+      window.location.href = 'file:///Users/shindaehui/Desktop/%E1%84%83%E1%85%A2%E1%84%92%E1%85%A1%E1%86%A8%20%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%B7/4%E1%84%92%E1%85%A1%E1%86%A8%E1%84%82%E1%85%A7%E1%86%AB/%E1%84%8F%E1%85%A5%E1%86%B7%E1%84%91%E1%85%B2%E1%84%90%E1%85%A5%E1%84%92%E1%85%A1%E1%86%A8%E1%84%80%E1%85%A2%E1%84%85%E1%85%A9%E1%86%AB/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%B3%20%E1%84%8F%E1%85%A9%E1%84%83%E1%85%B3/%E1%84%82%E1%85%A1%E1%86%AF%E1%84%8D%E1%85%A1%E1%84%89%E1%85%A5%E1%86%AB%E1%84%90%E1%85%A2%E1%86%A8%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5.html';
+    } else {
+      alert('날짜를 선택해주세요.');
+    }
+  });
+</script>
+</body>
+</html>
