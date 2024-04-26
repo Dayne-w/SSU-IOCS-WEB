@@ -54,7 +54,7 @@
   }
 
   .selected {
-    background-color: #8fbc8f;
+    background-color: #969696;
   }
 
   .seat:not(.occupied):hover {
@@ -94,9 +94,31 @@
     <div class="seat" data-seat="19">19</div>
     <div class="seat occupied" data-seat="20">20</div>
   </div>
+
+  <button id="reserveButton" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px 20px; font-size: 16px; color: white; background-color: #686868; border: none; border-radius: 5px; cursor: pointer;">예약하기</button>
 </div>
 
 <script>
+  const seats = document.querySelectorAll('.seat:not(.occupied)');
+  const reserveButton = document.getElementById('reserveButton');
+
+  seats.forEach(seat => {
+    seat.addEventListener('click', () => {
+      seat.classList.toggle('selected');
+    });
+  });
+
+  reserveButton.addEventListener('click', () => {
+    const selectedSeats = document.querySelectorAll('.row .seat.selected');
+    if(selectedSeats.length > 0) {
+      alert('예약이 완료되었습니다.');
+      selectedSeats.forEach(seat => {
+        seat.className = 'seat occupied';
+      });
+    } else {
+      alert('좌석을 선택해주세요.');
+    }
+  });
 </script>
 
 </body>
