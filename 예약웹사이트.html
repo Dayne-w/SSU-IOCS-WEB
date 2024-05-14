@@ -116,43 +116,35 @@
 
     <script>
       let mouseArray = [];
-      let lastTime = 0; // 마지막으로 좌표를 저장한 시간을 추적
-
-      // 마우스 이동 이벤트 리스너 등록
+      let lastTime = 0;
+      let macroDetected = false; // 매크로 탐지 상태를 추적하는 변수
+    
       document.addEventListener("mousemove", (event) => {
         const now = Date.now();
         if (now - lastTime >= 100) {
-          // 0.1초(100밀리초)마다 좌표를 저장
           lastTime = now;
           const x = event.clientX;
           const y = event.clientY;
           mouseArray.push({ x, y });
-          // console.log(mouseArray);
         }
       });
-
+    
       function sendMouseData() {
         if (mouseArray.length > 0) {
-          // x와 y 좌표를 분리하여 저장
           const xCoords = mouseArray.map((point) => point.x);
           const yCoords = mouseArray.map((point) => point.y);
-
-          // API 요청을 위한 데이터 구조
           const postData = {
             x: xCoords,
             y: yCoords,
           };
-
-          fetch(
-            "https://q39x4vmirk.execute-api.ap-northeast-2.amazonaws.com/convature",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(postData),
-            }
-          )
+    
+          fetch("https://q39x4vmirk.execute-api.ap-northeast-2.amazonaws.com/convature", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(postData),
+          })
             .then((response) => response.json())
             .then((data) => {
               console.log(data);
@@ -161,38 +153,47 @@
               console.log("Min Curvature:", data.values["MinCurvature"]);
               console.log("Curvature Std:", data.values["CurvatureStd"]);
               console.log("isMacro:", data.isMacro);
+              if (data.isMacro) {
+                macroDetected = true;
+              }
             })
             .catch((error) => {
               console.error("Error:", error);
             });
-
-          // 배열 초기화
+    
           mouseArray = [];
         }
       }
-
+    
       const seats = document.querySelectorAll(".seat:not(.occupied)");
       const reserveButton = document.getElementById("reserveButton");
-
+    
       seats.forEach((seat) => {
         seat.addEventListener("click", () => {
           seat.classList.toggle("selected");
-          sendMouseData(); // 좌석 선택 시 마우스 데이터 전송
+          sendMouseData();
         });
       });
-
+    
       reserveButton.addEventListener("click", () => {
-        sendMouseData(); // 예약 버튼 클릭 시 마우스 데이터 전송
-        const selectedSeats = document.querySelectorAll(".row .seat.selected");
-        if (selectedSeats.length > 0) {
-          alert("예약이 완료되었습니다.");
-          selectedSeats.forEach((seat) => {
-            seat.className = "seat occupied";
-          });
-        } else {
-          alert("좌석을 선택해주세요.");
-        }
+        sendMouseData();
+        setTimeout(() => {  // API 응답을 기다리기 위한 타이머 설정
+          if (macroDetected) {
+            alert("매크로 프로그램이 탐지되었습니다.");
+          } else {
+            const selectedSeats = document.querySelectorAll(".row .seat.selected");
+            if (selectedSeats.length > 0) {
+              alert("좌석 예약이 완료되었습니다.");
+              selectedSeats.forEach((seat) => {
+                seat.className = "seat occupied";
+              });
+            } else {
+              alert("좌석을 선택해주세요.");
+            }
+          }
+          macroDetected = false; // 탐지 상태 초기화
+        }, 500); // API 응답을 기다리는 충분한 시간 (적절히 조절 필요)
       });
-    </script>
+    </script>    
   </body>
 </html>
