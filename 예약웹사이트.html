@@ -133,39 +133,37 @@
       });
     
       function sendMouseData() {
-        if (mouseArray.length > 0) {
-          const xCoords = mouseArray.map((point) => point.x);
-          const yCoords = mouseArray.map((point) => point.y);
-          const postData = {
-            x: xCoords,
-            y: yCoords,
-          };
+        const xCoords = mouseArray.map((point) => point.x);
+        const yCoords = mouseArray.map((point) => point.y);
+        const postData = {
+          x: xCoords,
+          y: yCoords,
+        };
     
-          fetch("https://q39x4vmirk.execute-api.ap-northeast-2.amazonaws.com/convature", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(postData),
+        fetch("https://q39x4vmirk.execute-api.ap-northeast-2.amazonaws.com/convature", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            console.log("Mean Curvature:", data.values["MeanCurvature"]);
+            console.log("Max Curvature:", data.values["MaxCurvature"]);
+            console.log("Min Curvature:", data.values["MinCurvature"]);
+            console.log("Curvature Std:", data.values["CurvatureStd"]);
+            console.log("isMacro:", data.isMacro);
+            if (data.isMacro) {
+              macroDetected = true;
+            }
           })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-              console.log("Mean Curvature:", data.values["MeanCurvature"]);
-              console.log("Max Curvature:", data.values["MaxCurvature"]);
-              console.log("Min Curvature:", data.values["MinCurvature"]);
-              console.log("Curvature Std:", data.values["CurvatureStd"]);
-              console.log("isMacro:", data.isMacro);
-              if (data.isMacro) {
-                macroDetected = true;
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
+          .catch((error) => {
+            console.error("Error:", error);
+          });
     
-          mouseArray = [];
-        }
+        mouseArray = [];
       }
     
       const seats = document.querySelectorAll(".seat:not(.occupied)");
