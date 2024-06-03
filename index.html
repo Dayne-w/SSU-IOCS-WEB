@@ -1,197 +1,201 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2024년 4월 달력</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    text-align: center; /* 제목을 중앙에 정렬 */
-    margin-top: 100px; /* 상단 여백을 줍니다. */
-    margin-bottom: 50px; /* 하단 여백을 수정 */
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2024년 4월 달력</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
 
-  .calendar, .next-button-container {
-    max-width: 300px;
-    margin: 20px auto;
-    border-collapse: collapse;
-    text-align: center;
-  }
-  .calendar th, 
-  .calendar td {
-    border: 1px solid #999;
-    padding: 30px;
-    text-align: center;
-  }
-  .calendar th {
-    background-color: #fdd59a;
-  }
-  .calendar td:not(.empty) {
-    cursor: pointer;
-  }
-  .calendar td:hover:not(.empty), .calendar td.selected {
-    background-color: #f0f0f0; /* 선택되거나 호버된 셀의 배경색 */
-  }
-  .next-button {
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #686868; /* Green */
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-</style>
-</head>
-<body>
+      h1 {
+        text-align: center; /* 제목을 중앙에 정렬 */
+        margin-top: 100px; /* 상단 여백을 줍니다. */
+        margin-bottom: 50px; /* 하단 여백을 수정 */
+      }
 
-<h1>2024년 4월 예약 페이지</h1>
-<table class="calendar">
-  <tr>
-    <th>일</th>
-    <th>월</th>
-    <th>화</th>
-    <th>수</th>
-    <th>목</th>
-    <th>금</th>
-    <th>토</th>
-  </tr>
-  <tr>
-    <td class="empty"></td>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-    <td>4</td>
-    <td>5</td>
-    <td>6</td>
-  </tr>
-  <tr>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-    <td>10</td>
-    <td>11</td>
-    <td>12</td>
-    <td>13</td>
-  </tr>
-  <tr>
-    <td>14</td>
-    <td>15</td>
-    <td>16</td>
-    <td>17</td>
-    <td>18</td>
-    <td>19</td>
-    <td>20</td>
-  </tr>
-  <tr>
-    <td>21</td>
-    <td>22</td>
-    <td>23</td>
-    <td>24</td>
-    <td>25</td>
-    <td>26</td>
-    <td>27</td>
-  </tr>
-  <tr>
-    <td>28</td>
-    <td>29</td>
-    <td>30</td>
-    <td class="empty"></td>
-    <td class="empty"></td>
-    <td class="empty"></td>
-    <td class="empty"></td>
-  </tr>
-</table>
-<div class="next-button-container">
-  <button class="next-button" id="nextButton">다음</button>
-</div>
+      .calendar,
+      .next-button-container {
+        max-width: 300px;
+        margin: 20px auto;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      .calendar th,
+      .calendar td {
+        border: 1px solid #999;
+        padding: 30px;
+        text-align: center;
+      }
+      .calendar th {
+        background-color: #fdd59a;
+      }
+      .calendar td:not(.empty) {
+        cursor: pointer;
+      }
+      .calendar td:hover:not(.empty),
+      .calendar td.selected {
+        background-color: #f0f0f0; /* 선택되거나 호버된 셀의 배경색 */
+      }
+      .next-button {
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #686868; /* Green */
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>2024년 4월 예약 페이지</h1>
+    <table class="calendar">
+      <tr>
+        <th>일</th>
+        <th>월</th>
+        <th>화</th>
+        <th>수</th>
+        <th>목</th>
+        <th>금</th>
+        <th>토</th>
+      </tr>
+      <tr>
+        <td class="empty"></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+        <td>19</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+        <td>26</td>
+        <td>27</td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+        <td class="empty"></td>
+      </tr>
+    </table>
+    <div class="next-button-container">
+      <button class="next-button" id="nextButton">다음</button>
+    </div>
 
-<script>
-  let selectedDate = null;
-  let mouseArray = [];
-  let lastX = 0;
-  let lastY = 0;
-  let macroDetected = false; // 매크로 탐지 상태를 추적하는 변수
+    <script>
+      let selectedDate = null;
+      let mouseArray = [];
+      let lastX = window.screenX;
+      let lastY = window.screenY;
+      let macroDetected = false; // 매크로 탐지 상태를 추적하는 변수
 
-  document.addEventListener("mousemove", (event) => {
-    const x = event.clientX;
-    const y = event.clientY;
+      document.addEventListener("mousemove", (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
 
-    // x 또는 y 좌표가 1 이상 이동했을 때만 배열에 저장
-    if (Math.abs(x - lastX) >= 1 || Math.abs(y - lastY) >= 1) {
-      lastX = x;
-      lastY = y;
-      mouseArray.push({ x, y });
-    }
-  });
-
-  function sendMouseData() {
-    const xCoords = mouseArray.map((point) => point.x);
-    const yCoords = mouseArray.map((point) => point.y);
-    const postData = {
-      x: xCoords,
-      y: yCoords,
-    };
-
-    fetch("https://q39x4vmirk.execute-api.ap-northeast-2.amazonaws.com/convature", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        console.log("Mean Curvature:", data.values["MeanCurvature"]);
-        console.log("Max Curvature:", data.values["MaxCurvature"]);
-        console.log("Min Curvature:", data.values["MinCurvature"]);
-        console.log("Curvature Std:", data.values["CurvatureStd"]);
-        console.log("isMacro:", data.isMacro);
-        if (data.isMacro) {
-          macroDetected = true;
+        // x 또는 y 좌표가 1 이상 이동했을 때만 배열에 저장
+        if (x != lastX || y != lastY) {
+          lastX = x;
+          lastY = y;
+          mouseArray.push({ x, y });
         }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
       });
 
-    mouseArray = [];
-  }
+      async function sendMouseData() {
+        const xCoords = mouseArray.map((point) => point.x);
+        const yCoords = mouseArray.map((point) => point.y);
+        const postData = {
+          x: xCoords,
+          y: yCoords,
+        };
 
-  document.querySelectorAll('.calendar td:not(.empty)').forEach(td => {
-    td.addEventListener('click', function() {
-      // 이전에 선택된 날짜의 선택 상태를 제거
-      if (selectedDate) {
-        selectedDate.classList.remove('selected');
+        fetch(
+          "https://q39x4vmirk.execute-api.ap-northeast-2.amazonaws.com/convature",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(postData),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            console.log("Mean Curvature:", data.values["MeanCurvature"]);
+            console.log("Max Curvature:", data.values["MaxCurvature"]);
+            console.log("Min Curvature:", data.values["MinCurvature"]);
+            console.log("Curvature Std:", data.values["CurvatureStd"]);
+            console.log("isMacro:", data.isMacro);
+            if (data.isMacro) {
+              macroDetected = true;
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        mouseArray = [];
       }
-      // 현재 클릭한 날짜를 선택 상태로 변경
-      this.classList.add('selected');
-      selectedDate = this;
-      sendMouseData(); // 날짜 클릭 시 매크로 데이터 전송
-    });
-  });
 
-  document.getElementById('nextButton').addEventListener('click', function() {
-    sendMouseData(); // 버튼 클릭 시 매크로 데이터 전송
-    setTimeout(() => {  // API 응답을 기다리기 위한 타이머 설정
-      if (macroDetected) {
-        alert("매크로 프로그램이 탐지되었습니다.");
-      } else {
-        if (selectedDate) {
-          // 예약 웹사이트 페이지로 이동. 실제 URL로 변경 필요.
-          window.location.href = '예약웹사이트.html';
-        } else {
-          alert('날짜를 선택해주세요.');
-        }
-      }
-      macroDetected = false; // 탐지 상태 초기화
-    }, 500); // API 응답을 기다리는 충분한 시간 (적절히 조절 필요)
-  });
-</script>
+      document.querySelectorAll(".calendar td:not(.empty)").forEach((td) => {
+        td.addEventListener("click", function () {
+          // 이전에 선택된 날짜의 선택 상태를 제거
+          if (selectedDate) {
+            selectedDate.classList.remove("selected");
+          }
+          // 현재 클릭한 날짜를 선택 상태로 변경
+          this.classList.add("selected");
+          selectedDate = this;
+          sendMouseData(); // 날짜 클릭 시 매크로 데이터 전송
+        });
+      });
 
-</body>
+      document
+        .getElementById("nextButton")
+        .addEventListener("click", async function () {
+          await sendMouseData(); // 버튼 클릭 시 매크로 데이터 전송
+
+          if (macroDetected) {
+            alert("매크로 프로그램이 탐지되었습니다.");
+          } else {
+            if (selectedDate) {
+              // 예약 웹사이트 페이지로 이동. 실제 URL로 변경 필요.
+              window.location.href = "예약웹사이트.html";
+            } else {
+              alert("날짜를 선택해주세요.");
+            }
+          }
+          macroDetected = false; // 탐지 상태 초기화
+        });
+    </script>
+  </body>
 </html>
