@@ -142,7 +142,7 @@
 
         console.log(postData);
 
-        fetch(
+        await fetch(
           "https://q39x4vmirk.execute-api.ap-northeast-2.amazonaws.com/convature",
           {
             method: "POST",
@@ -182,7 +182,10 @@
       });
 
       reserveButton.addEventListener("click", async () => {
+        console.log("1---", macroDetected);
         await sendMouseData();
+
+        console.log("2---", macroDetected);
 
         if (macroDetected) {
           alert("매크로 프로그램이 탐지되었습니다.");
@@ -191,6 +194,7 @@
             ".row .seat.selected"
           );
           if (selectedSeats.length > 0) {
+            console.log("3---", macroDetected);
             alert("좌석 예약이 완료되었습니다.");
             selectedSeats.forEach((seat) => {
               seat.className = "seat occupied";
